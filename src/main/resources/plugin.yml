@@ -1,0 +1,4 @@
+name: TestPlugin
+version: '${project.version}'
+main: xyz.shoraii.testplugin.TestPlugin
+api-version: 1.18
