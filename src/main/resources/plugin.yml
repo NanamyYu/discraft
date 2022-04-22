@@ -1,0 +1,4 @@
+name: Discraft
+version: '${project.version}'
+main: discraft.discraft.Discraft
+api-version: 1.18
