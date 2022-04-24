@@ -9,25 +9,25 @@ public final class Constants {
 
     public enum MESSAGES {
         LOGIN_PROMPT {
-            public String toString() {
+            public final String toString() {
                 return "Please send \"/login\" command to bot %s and enter the code here";
             }
         },
 
         REG_PROMPT {
-            public String toString() {
-                return "Go to bot %s and write code %s to register";
+            public final String toString() {
+                return "Go to bot %s and send \"/reg %s\" command to register";
             }
         },
 
         CORRECT_CODE {
-            public String toString() {
+            public final String toString() {
                 return "Correct code!";
             }
         },
 
         INCORRECT_CODE {
-            public String toString() {
+            public final String toString() {
                 return "Incorrect code!";
             }
         }
