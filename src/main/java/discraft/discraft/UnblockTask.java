@@ -19,5 +19,4 @@ public class UnblockTask extends BukkitRunnable {
         player.removePotionEffect(PotionEffectType.BLINDNESS);
         player.setGameMode(GameMode.SURVIVAL);
     }
-
 }
