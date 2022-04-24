@@ -30,6 +30,12 @@ public final class Constants {
             public final String toString() {
                 return "Incorrect code!";
             }
+        },
+
+        STATS_REPLY {
+            public final String toString() {
+                return "%d users are registered, %d users are online";
+            }
         }
     }
 }
