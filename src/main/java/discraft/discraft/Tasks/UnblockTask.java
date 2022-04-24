@@ -1,4 +1,4 @@
-package discraft.discraft;
+package discraft.discraft.Tasks;
 
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;

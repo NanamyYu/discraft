@@ -1,5 +1,9 @@
-package discraft.discraft;
+package discraft.discraft.Listeners;
 
+import discraft.discraft.Constants;
+import discraft.discraft.Database;
+import discraft.discraft.PluginConfig;
+import discraft.discraft.Tasks.UnblockTask;
 import org.bukkit.GameMode;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

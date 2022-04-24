@@ -1,5 +1,7 @@
 package discraft.discraft;
 
+import discraft.discraft.Commands.DiscraftstatsCommand;
+import discraft.discraft.Listeners.EventListener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Discraft extends JavaPlugin {
@@ -10,5 +12,6 @@ public final class Discraft extends JavaPlugin {
         Database database = new Database(Constants.BASE_DIR_PATHNAME,
                 Constants.LINKED_PATHNAME, Constants.REG_CODES_PATHNAME, Constants.LOGIN_CODES_PATHNAME);
         getServer().getPluginManager().registerEvents(new EventListener(this, config, database), this);
+        getCommand("discraftstats").setExecutor(new DiscraftstatsCommand(database, getServer()));
     }
 }

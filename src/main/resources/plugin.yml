@@ -2,3 +2,8 @@ name: Discraft
 version: '${project.version}'
 main: discraft.discraft.Discraft
 api-version: 1.18
+commands:
+  discraftstats:
+    description: Get information about registered and online users
+    usage: /discraftstats
+    permission: discraft.discraftstats
