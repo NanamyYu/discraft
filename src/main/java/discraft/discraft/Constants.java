@@ -36,6 +36,12 @@ public final class Constants {
             public final String toString() {
                 return "%d users are registered, %d users are online";
             }
-        }
+        },
+
+        TOP_LOGGED_IN_REPLY {
+            public final String toString(){
+                return "Top logged in users in %s";
+            }
+        },
     }
 }

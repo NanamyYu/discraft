@@ -3,6 +3,7 @@ package discraft.discraft.Listeners;
 import discraft.discraft.Constants;
 import discraft.discraft.Database;
 import discraft.discraft.PluginConfig;
+import discraft.discraft.Statistics.SessionStatistics;
 import discraft.discraft.Tasks.UnblockTask;
 import org.bukkit.GameMode;
 import org.bukkit.event.EventHandler;
@@ -18,6 +19,7 @@ import org.bukkit.scheduler.BukkitTask;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class EventListener implements Listener {
@@ -28,13 +30,10 @@ public class EventListener implements Listener {
 
     final Database database;
 
-    private HashSet<String> loggedInPlayers;
-
     public EventListener(JavaPlugin plugin, PluginConfig config, Database database) {
         this.plugin = plugin;
         this.config = config;
         this.database = database;
-        this.loggedInPlayers = new HashSet<>();
     }
 
     @EventHandler
@@ -70,9 +69,7 @@ public class EventListener implements Listener {
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent e) {
         String name = e.getPlayer().getName();
-        if (this.loggedInPlayers.contains(name)) {
-            this.loggedInPlayers.remove(name);
-        }
+        SessionStatistics.loggedInPlayers.remove(name);
     }
 
     @EventHandler
@@ -80,13 +77,14 @@ public class EventListener implements Listener {
         String name = e.getPlayer().getName();
         String message = e.getMessage();
         HashMap<String, String> nameToLoginCode = this.database.getLoginCodesHashMap();
-        if (this.loggedInPlayers.contains(name)) {
+        if (SessionStatistics.loggedInPlayers.contains(name)) {
             return;
         }
         if (!Objects.equals(nameToLoginCode.get(name), "None") && Objects.equals(nameToLoginCode.get(name), message)) {
             e.getPlayer().sendMessage(Constants.MESSAGES.CORRECT_CODE.toString());
             BukkitTask unblockTask = new UnblockTask(e.getPlayer()).runTask(this.plugin);
-            this.loggedInPlayers.add(name);
+            SessionStatistics.loggedInPlayers.add(name);
+            SessionStatistics.loginsThisSession.merge(name, 1, Integer::sum);
             this.database.pullLoginCodes(name, "None");
         } else {
             e.getPlayer().sendMessage(Constants.MESSAGES.INCORRECT_CODE.toString());
