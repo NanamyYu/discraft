@@ -36,7 +36,7 @@ pause
 # Запуск Discord-бота
 **fool_path_to_plugins** - полный путь до папки **...\server\plugins**, содержащей:
  * папкой **discraft** с файлами: **linked.json**, **login_codes.json** и **reg_codes.json**
- * файлами**discraft_config.json** и **admins.json**
+ * файлами **discraft_config.json** и **admins.json**
 ```
 cd bot
 sudo docker build --tag bot .
