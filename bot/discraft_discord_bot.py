@@ -128,38 +128,38 @@ async def check_reg(user):
     return False
 
 async def open_linked():
-    with open('discraft/linked.json') as f:
+    with open('plugins/discraft/linked.json') as f:
         linked = json.load(f)
     return linked
 
 async def open_reg():
-    with open('discraft/reg_codes.json') as f:
+    with open('plugins/discraft/reg_codes.json') as f:
         reg_codes = json.load(f)
     return reg_codes
 
 async def open_login():
-    with open('discraft/login_codes.json') as f:
+    with open('plugins/discraft/login_codes.json') as f:
         login_codes = json.load(f)
     return login_codes
 
 async def close_login(login_codes):
-    with open('discraft/login_codes.json', 'w') as f:
+    with open('plugins/discraft/login_codes.json', 'w') as f:
         json.dump(login_codes, f)
     return
     
 async def close_linked(linked):
-    with open('discraft/linked.json', 'w') as f:
+    with open('plugins/discraft/linked.json', 'w') as f:
         json.dump(linked, f)
     return
 
 async def close_reg(reg_codes):
-    with open('discraft/reg_codes.json', 'w') as f:
+    with open('plugins/discraft/reg_codes.json', 'w') as f:
         json.dump(reg_codes, f)
     return
 
 @client.command()
 async def stop(ctx):
-    with open('admins.json') as f:
+    with open('plugins/admins.json') as f:
         admins = json.load(f)
     if str(ctx.message.author) not in admins:
         return
@@ -169,10 +169,10 @@ async def stop(ctx):
     exit(1)
 
     
-if not exists('discraft_config.json'):
+if not exists('plugins/discraft_config.json'):
     print('CONFIG NOT FOUND!')
     exit(1)
-with open('discraft_config.json') as f:
+with open('plugins/discraft_config.json') as f:
     conf = json.load(f)
     config['token'] = conf['bot_token']
 client.run(config["token"])
