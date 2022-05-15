@@ -39,6 +39,6 @@ pause
 * файлом **discraft_config.json**
 ```
 cd bot
-sudo dockebuild --tag bot .
+sudo docker build --tag bot .
 sudo docker run -t -i -v /fool_path_to_files:/bot bot
 ```
