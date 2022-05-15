@@ -40,5 +40,5 @@ pause
 ```
 cd bot
 sudo dockebuild --tag bot .
-sudo docker run -t -i -v /fool_path_to_files:/bot/discraft bot
+sudo docker run -t -i -v /fool_path_to_files:/bot bot
 ```
