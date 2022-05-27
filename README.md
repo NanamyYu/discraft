@@ -35,7 +35,7 @@ pause
 
 # Запуск Discord-бота
 
-**full_path_to_plugins** - полный путь до папки **...\server\plugins**, содержащей:
+**full_path_to_plugins** - полный путь до папки **/home/.../server/plugins**, содержащей:
 * папку **discraft** с файлами: **linked.json**, **login_codes.json** и **reg_codes.json**
 * файлы **discraft_config.json** и **admins.json**
 

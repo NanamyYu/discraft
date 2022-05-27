@@ -3,8 +3,8 @@ version: "3.3"
 services:
     discord_bot:
         build:
-            context: .
-            dockerfile: bot/Dockerfile
+            context: bot/
+            dockerfile: Dockerfile
         image: discord_bot
         container_name: discord_bot
         volumes:
