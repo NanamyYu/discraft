@@ -34,11 +34,26 @@ pause
 6. После успешного запуска сервера со всеми настройками (**Done (33.126s)! For help, type "help"**) - можно заходить на сервер по адресу **server-ip=127.0.0.1** (из шага **5.2**)
 
 # Запуск Discord-бота
+
 **full_path_to_plugins** - полный путь до папки **...\server\plugins**, содержащей:
- * папкой **discraft** с файлами: **linked.json**, **login_codes.json** и **reg_codes.json**
- * файлами **discraft_config.json** и **admins.json**
-```
-cd bot
-sudo docker build --tag bot .
-sudo docker run -t -i -v /full_path_to_plugins:/bot/plugins bot
-```
+* папку **discraft** с файлами: **linked.json**, **login_codes.json** и **reg_codes.json**
+* файлы **discraft_config.json** и **admins.json**
+
+1. Заменить в файле **docker-compose.yaml** параметр **full_path_to_plugins**
+
+2. Запуск
+ ```
+ sudo docker-compose up --build
+ ```
+
+3. Очистка после запуска
+ ```
+ sudo docker-compose down -v --rmi all --remove-orphans
+ sudo docker rm -f $(sudo docker ps -a -q)
+ ```
+
+4. Если при запуске не работает pip
+ ```
+ sudo systemctl daemon-reload
+ sudo systemctl restart docker
+ ```
