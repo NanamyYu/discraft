@@ -14,6 +14,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3  
       - name: Build the Docker image
-        run: docker build --tag bot discraft-bot
+        run: docker build bot --tag Dockerfile discraft-bot
       - name: Build bot
         run: docker run discraft-bot
