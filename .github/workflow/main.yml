@@ -1,3 +1,5 @@
+name: Docker-compose CI 
+
 on: 
   push: 
     branches: [main]
