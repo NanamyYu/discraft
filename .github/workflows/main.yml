@@ -24,7 +24,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v3
         with:
-          images: nanamyyu/discraft-private-repo
+          images: nanamyyu/discraft-repo
           
       - name: Build and push
         uses: docker/build-push-action@v2
