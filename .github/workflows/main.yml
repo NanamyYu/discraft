@@ -3,6 +3,7 @@ name: Docker images CI
 on: 
   push: 
     branches: [main]
+    tags: ['v*']
   pull_request: 
     branches: [main]
 
@@ -24,12 +25,12 @@ jobs:
         id: meta
         uses: docker/metadata-action@v3
         with:
-          images: nanamyyu/discraft-repo:latest
+          images: nanamyyu/discraft-repo
           
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
           context: ./bot
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: nanamyyu/discraft-repo:latest
           labels: ${{ steps.meta.outputs.labels }}
