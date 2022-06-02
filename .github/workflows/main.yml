@@ -1,4 +1,4 @@
-name: Docker-compose CI 
+name: Docker images CI 
 
 on: 
   push: 
@@ -12,6 +12,8 @@ jobs:
     name: Bot build
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3  
+      - name: Build the Docker image
+        run: docker build . --file bot/Dockerfile --tag discraft-bot
       - name: Build bot
-        run: docker-compose up --build
+        run: docker run discraft-bot
