@@ -6,6 +6,20 @@
 
 При последующих заходах на этот сервер пользователю будет предлагаться авторизоваться с помощью кода, который ему в Discord пришлет бот.
 
+# Сборка и тестирование плагина:
+В артефактах успешных сборок [Java CI](https://github.com/NanamyYu/discraft/actions/workflows/java.yaml) лежат архивы:
+* **discraft.jar**  - сам плагин
+* **tests coverage** - html-ки с результатами покрытия тестами
+* **tests results** - результаты тестов (сохраняется и при неудачной сборке)
+
+Если возникают проблемы, можно собрать локально:
+```
+mvn clean package
+```
+* должен создаться плагин: **./target/discraft-1.0.jar**
+* html-ки с результатами покрытия лежат в **./target/site/jacoco**
+* результаты тестов лежат в:  **./target/surefire-reports**
+
 # Запуск сервера
 1. Для запуска сервера нужна [Java 8](https://www.azul.com/downloads/#download-openjdk)
  
@@ -44,6 +58,19 @@ pause
 2. Запуск
  ```
  sudo docker-compose up --build
+ ```
+ **docker-compose** скачивает образ [nanamyyu/discraft-repo:latest](https://hub.docker.com/r/nanamyyu/discraft-repo) запушенный во время [Docker images CI ](https://github.com/NanamyYu/discraft/actions/workflows/docker.yml)
+ 
+ Если возникают проблемы, можно попробовать заменить в файле **docker-compose.yaml** скачивание
+ ```
+ image: nanamyyu/discraft-repo:latest
+ ```
+ на сборку
+ ```
+ build:
+     context: bot/
+     dockerfile: Dockerfile
+ image: discord_bot
  ```
 
 3. Очистка после запуска
