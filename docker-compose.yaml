@@ -2,13 +2,13 @@ version: "3.3"
 
 services:
     discord_bot:
-        build:
-            context: bot/
-            dockerfile: Dockerfile
-        image: discord_bot
-        container_name: discord_bot
+        # build:
+        #     context: bot/
+        #     dockerfile: Dockerfile
+        # image: discord_bot
+        image: nanamyyu/discraft-repo:latest
         volumes:
-            - full_path_to_plugins:/bot/plugins # full_path_to_plugins - полный путь до папки /home/.../server/plugins
+            - /home/alice/Desktop/test:/bot/plugins # full_path_to_plugins - полный путь до папки /home/.../server/plugins
         ports:
             - "5000:5000"
-
+        network_mode: "host"
