@@ -22,12 +22,24 @@ jobs:
           distribution: 'adopt'
 
       - name: Build with Maven
+        id: build
         run: mvn --batch-mode --update-snapshots package
+            
+      - name: Save discraft.jar
+        run: mkdir plugin && cp target/discraft*.jar plugin
+
+      - name: Upload .jar
+        uses: actions/upload-artifact@v3
+        with:
+          name: discraft.jar
+          path: plugin
 
       - name: Save tests results
+        if: steps.build.outcome == 'success' || steps.build.outcome == 'failure'
         run: mkdir tests_results && cp -R target/surefire-reports tests_results
 
       - name: Upload tests results
+        if: steps.build.outcome == 'success' || steps.build.outcome == 'failure'
         uses: actions/upload-artifact@v3
         with:
           name: tests results
@@ -40,13 +52,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: tests coverage
-          path: tests_coverage    
-      
-      - name: Save discraft.jar
-        run: mkdir plugin && cp target/discraft*.jar plugin
-
-      - name: Upload .jar
-        uses: actions/upload-artifact@v3
-        with:
-          name: discraft.jar
-          path: plugin
+          path: tests_coverage
