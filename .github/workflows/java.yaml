@@ -28,8 +28,8 @@ jobs:
           name: discraft.jar
           path: plugin
       - name: Save tests results
-        run: mkdir tests && cp target/site/jacoco tests
-      - name: Upload .jar
+        run: mkdir tests && cp -R target/site/jacoco tests
+      - name: Upload tests results
         uses: actions/upload-artifact@v3
         with:
           name: tests results
