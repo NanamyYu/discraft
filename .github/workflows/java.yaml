@@ -35,11 +35,11 @@ jobs:
           path: plugin
 
       - name: Save tests results
-        if: steps.build.outcome == 'success' || steps.build.outcome == 'failure'
+        if: (${{ success() }} || ${{ failure() }})
         run: mkdir tests_results && cp -R target/surefire-reports tests_results
 
       - name: Upload tests results
-        if: steps.build.outcome == 'success' || steps.build.outcome == 'failure'
+        if: (${{ success() }} || ${{ failure() }})
         uses: actions/upload-artifact@v3
         with:
           name: tests results
