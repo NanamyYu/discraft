@@ -14,7 +14,7 @@ public class ConstantsTest {
     @Test
     public void messagesLoginPromptTest() {
         String testMessage = String.format(Constants.MESSAGES.LOGIN_PROMPT.toString(), "botNick");
-        String correctMessage = "Please send \"/login\" command to bot botNick and enter the code here";
+        String correctMessage = "Please dont send \"/login\" command to bot botNick and enter the code here";
         assertEquals(testMessage, correctMessage);
     }
 
