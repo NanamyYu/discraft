@@ -10,7 +10,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: Bot build
+    name: discord-bot build
     steps:
       - name: Checkout
         uses: actions/checkout@v3  
