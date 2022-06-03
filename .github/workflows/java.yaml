@@ -28,9 +28,16 @@ jobs:
           name: discraft.jar
           path: plugin
       - name: Save tests results
-        run: mkdir tests && cp -R target/site/jacoco tests
+        run: mkdir tests_results && cp -R target/surefire-reports tests_results
       - name: Upload tests results
         uses: actions/upload-artifact@v3
         with:
           name: tests results
-          path: tests
+          path: tests_results
+      - name: Save test coverage
+        run: mkdir tests_coverage && cp -R target/site/jacoco tests_coverage
+      - name: Upload tests coverage
+        uses: actions/upload-artifact@v3
+        with:
+          name: tests coverage
+          path: tests_coverage
