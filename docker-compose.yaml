@@ -8,7 +8,7 @@ services:
         # image: discord_bot
         image: nanamyyu/discraft-repo:latest
         volumes:
-            - /home/alice/Desktop/test:/bot/plugins # full_path_to_plugins - полный путь до папки /home/.../server/plugins
+            - full_path_to_plugins:/bot/plugins # full_path_to_plugins - полный путь до папки /home/.../server/plugins
         ports:
             - "5000:5000"
         network_mode: "host"
