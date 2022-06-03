@@ -10,7 +10,7 @@
 ```
 mvn clean package
 ```
-Должен создаться плагин: **discraft-1.0.jar**
+Должен создаться плагин: **./target/discraft-1.0.jar**
 
 Красивые результаты "покрытия" лежат в **./target/site/jacoco/index.html**
 
